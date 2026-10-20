@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Projeto da Turma 2</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-id="2">
+<header class="topo">
+  <p id="turma"></p>
+  <h1 id="tema"></h1>
+  <p><a href="index.html">Ver todos os projetos</a></p>
+</header>
+<main>
+  <h2>Sobre o projeto</h2>
+  <p class="resumo" id="resumo"></p>
+  <h2>Dê sua nota</h2>
+  <form id="voto">
+    <fieldset>
+      <legend>Como foi a apresentação?</legend>
+      <div class="estrelas">
+        <input type="radio" name="nota" id="n5" value="5"><label for="n5" title="5 estrelas">★</label>
+        <input type="radio" name="nota" id="n4" value="4"><label for="n4" title="4 estrelas">★</label>
+        <input type="radio" name="nota" id="n3" value="3"><label for="n3" title="3 estrelas">★</label>
+        <input type="radio" name="nota" id="n2" value="2"><label for="n2" title="2 estrelas">★</label>
+        <input type="radio" name="nota" id="n1" value="1"><label for="n1" title="1 estrela">★</label>
+      </div>
+    </fieldset>
+    <label class="campo">Seu nome
+      <input type="text" name="nome" maxlength="60" autocomplete="name" required>
+    </label>
+    <label class="campo">Comentário (opcional)
+      <textarea name="comentario" rows="3" maxlength="300"></textarea>
+    </label>
+    <button type="submit">Enviar nota</button>
+    <p class="pequeno">Um voto por pessoa neste projeto.</p>
+  </form>
+  <p class="aviso" id="aviso" hidden></p>
+</main>
+<script src="projetos.js"></script>
+<script src="config.js"></script>
+<script src="vote.js"></script>
+</body>
+</html>
