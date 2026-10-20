@@ -41,7 +41,9 @@ depois Settings > Pages > Branch: main / (root) > Save.
 O site fica em https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/
 
 ## 4. QR Codes
-Um QR por projeto, apontando para, por exemplo,
+Abra `compartilhar.html` depois de publicar o site e use o botão **Imprimir QR Codes**. A página monta e organiza automaticamente um QR para cada projeto. Antes disso, confira o endereço em `SITE_URL` no `config.js`.
+
+Um QR por projeto aponta, por exemplo, para
 https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/projeto.html?id=103-2
 
 Há 13 projetos cadastrados. Os identificadores seguem o formato `TURMA-PROJETO`: `101-1`, `102-1`, `102-2`, `103-1`, `103-2`, `103-3`, `104-1`, `201-1`, `202-1`, `203-1`, `204-1`, `301-1` e `302-1`.

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QR Codes | Feira de Projetos</title><link rel="stylesheet" href="style.css">
+</head>
+<body class="pagina-compartilhar">
+<header class="topo topo-compartilhar">
+  <p>Material da organização</p>
+  <h1>QR Codes para votação</h1>
+  <p>Imprima um cartão ao lado de cada trabalho. Cada QR leva o visitante diretamente à página daquele projeto.</p>
+</header>
+<main class="compartilhar-main">
+  <div class="acoes-impressao">
+    <a href="index.html">← Voltar à feira</a>
+    <button type="button" onclick="window.print()">Imprimir QR Codes</button>
+  </div>
+  <p class="pequeno">Os QR Codes são públicos e destinados aos visitantes. Os links de avaliadores devem ser gerados separadamente, com o código individual de cada avaliador.</p>
+  <section id="qrs" class="qrs" aria-live="polite"></section>
+</main>
+<script src="projetos.js"></script><script src="config.js"></script><script src="compartilhar.js"></script>
+</body></html>

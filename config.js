@@ -1,5 +1,7 @@
 /* Veja o LEIA-ME.md para saber onde achar estes valores no Google Forms */
 window.CONFIG = {
+  /* Endereço público do GitHub Pages, usado para montar os QRs de votação. */
+  SITE_URL: "https://devluizg.github.io/feira-ciencias",
   /*
    * Cole aqui a URL do Web App do Google Apps Script (veja LEIA-ME.md).
    * Com ela preenchida, os votos do público, as avaliações e o ranking
