@@ -2,13 +2,21 @@
 <html lang="pt-BR">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Avaliação | Feira de Projetos</title><link rel="stylesheet" href="style.css"></head>
 <body class="pagina-avaliacao">
-<header class="topo topo-avaliador"><p>Área da comissão avaliadora</p><h1 id="tema">Avaliação do projeto</h1><p id="turma"></p></header>
+<header class="topo topo-avaliador"><p class="sobretitulo">Área reservada · comissão avaliadora</p><h1 id="tema">Avaliação do projeto</h1><p id="turma"></p><p class="orientadores" id="orientadores"></p></header>
 <main>
-  <div class="selo-avaliador">Voto técnico · 3 critérios</div><p class="resumo" id="resumo"></p>
+  <div class="selo-avaliador">Voto técnico · 3 critérios</div>
+  <p class="resumo" id="resumo"></p>
+  <section class="guia-avaliacao" aria-labelledby="titulo-guia">
+    <p class="sobretitulo">Como avaliar</p>
+    <h2 id="titulo-guia">Olhe o conjunto da experiência</h2>
+    <p>Considere o que o grupo pesquisou, a solução que propõe e como conseguiu explicar suas escolhas. Cada critério vale de 1 a 5.</p>
+    <ol class="passos-avaliacao"><li><b>1</b> Observe</li><li><b>2</b> Reflita</li><li><b>3</b> Registre</li></ol>
+  </section>
+  <h2 class="titulo-formulario">Registre suas notas</h2>
   <form id="avaliacao">
-    <fieldset><legend>1. Qualidade científica e domínio do tema</legend><div class="escala" data-campo="cientifico"></div></fieldset>
-    <fieldset><legend>2. Criatividade e impacto da solução</legend><div class="escala" data-campo="inovacao"></div></fieldset>
-    <fieldset><legend>3. Comunicação e apresentação do grupo</legend><div class="escala" data-campo="apresentacao"></div></fieldset>
+    <fieldset><legend><span>01</span> Qualidade científica e domínio do tema</legend><p class="descricao-criterio">O projeto tem fundamento, coerência e demonstra compreensão do assunto?</p><div class="escala" data-campo="cientifico"></div></fieldset>
+    <fieldset><legend><span>02</span> Criatividade e impacto da solução</legend><p class="descricao-criterio">A proposta é inventiva, relevante e contribui para uma questão real?</p><div class="escala" data-campo="inovacao"></div></fieldset>
+    <fieldset><legend><span>03</span> Comunicação e apresentação do grupo</legend><p class="descricao-criterio">O grupo explicou suas ideias com clareza, organização e participação?</p><div class="escala" data-campo="apresentacao"></div></fieldset>
     <label class="campo">Observação para a comissão (opcional)<textarea name="comentario" rows="3" maxlength="500"></textarea></label>
     <button type="submit">Registrar avaliação</button><p class="pequeno">Cada código de avaliador pode registrar uma avaliação por projeto.</p>
   </form><p class="aviso" id="aviso" hidden></p>

@@ -15,6 +15,15 @@
   document.getElementById("turma").textContent = "Turma " + P.turma + " · Projeto " + P.numero;
   document.getElementById("tema").textContent = P.tema;
   document.getElementById("resumo").textContent = P.resumo;
+  document.getElementById("orientadores").textContent = "Orientação: " + P.orientadores;
+  var arquivoBanner = "imagens/" + P.id + "-banner.png";
+  var banner = new Image();
+  banner.onload = function () {
+    var topo = document.querySelector(".pagina-avaliacao .topo");
+    topo.style.setProperty("--imagem-projeto", 'url("' + arquivoBanner + '")');
+    topo.classList.add("tem-imagem");
+  };
+  banner.src = arquivoBanner;
 
   document.querySelectorAll(".escala").forEach(function (el) {
     var campo = el.dataset.campo;
