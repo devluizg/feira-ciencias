@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Avaliação | Turma 1</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="pagina-avaliacao" data-id="1">
+<header class="topo topo-avaliador">
+  <p>Área da comissão avaliadora</p>
+  <h1 id="tema">Avaliação do projeto</h1>
+  <p id="turma"></p>
+</header>
+<main>
+  <div class="selo-avaliador">Voto técnico · 3 critérios</div>
+  <p class="resumo" id="resumo"></p>
+  <form id="avaliacao">
+    <fieldset>
+      <legend>1. Qualidade científica e domínio do tema</legend>
+      <div class="escala" data-campo="cientifico"></div>
+    </fieldset>
+    <fieldset>
+      <legend>2. Criatividade e impacto da solução</legend>
+      <div class="escala" data-campo="inovacao"></div>
+    </fieldset>
+    <fieldset>
+      <legend>3. Comunicação e apresentação do grupo</legend>
+      <div class="escala" data-campo="apresentacao"></div>
+    </fieldset>
+    <label class="campo">Observação para a comissão (opcional)
+      <textarea name="comentario" rows="3" maxlength="500"></textarea>
+    </label>
+    <button type="submit">Registrar avaliação</button>
+    <p class="pequeno">Cada código de avaliador pode registrar uma avaliação por projeto.</p>
+  </form>
+  <p class="aviso" id="aviso" hidden></p>
+</main>
+<script src="projetos.js"></script>
+<script src="config.js"></script>
+<script src="avaliacao.js"></script>
+</body>
+</html>

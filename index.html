@@ -10,7 +10,8 @@
 <header class="topo">
   <p>Feira de projetos</p>
   <h1>Água, clima e sustentabilidade</h1>
-  <p>Oito turmas, oito projetos. Leia o resumo e dê sua nota depois da apresentação.</p>
+  <p>Dez turmas, treze projetos. Leia o resumo e dê sua nota depois da apresentação.</p>
+  <p><a href="ranking.html">Acompanhar ranking da feira</a></p>
 </header>
 <main>
   <ul class="lista" id="lista"></ul>
@@ -18,7 +19,7 @@
 <script src="projetos.js"></script>
 <script>
 document.getElementById("lista").innerHTML = PROJETOS.map(function (p) {
-  return '<li><a href="turma-' + p.id + '.html"><b>' + p.turma + '</b><span>' + p.tema + '</span></a></li>';
+  return '<li><a href="projeto.html?id=' + encodeURIComponent(p.id) + '"><b>Turma ' + p.turma + ' · Projeto ' + p.numero + '</b><span>' + p.tema + '</span><small>Orientação: ' + p.orientadores + '</small></a></li>';
 }).join("");
 </script>
 </body>

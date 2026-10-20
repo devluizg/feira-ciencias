@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ranking | Feira de Projetos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="pagina-ranking">
+<header class="topo topo-ranking">
+  <p>Resultado da feira</p>
+  <h1>Ranking dos projetos</h1>
+  <p>A nota da comissão define a posição. Em empate, prevalece a média do público e, depois, a quantidade de votos.</p>
+</header>
+<main>
+  <div class="legenda-ranking"><span>Comissão: média de 3 critérios</span><span>Público: critério de desempate</span></div>
+  <ol id="ranking" class="ranking" aria-live="polite"><li class="carregando">Carregando resultados…</li></ol>
+  <p class="pequeno" id="atualizado"></p>
+</main>
+<script src="config.js"></script>
+<script src="ranking.js"></script>
+</body>
+</html>
