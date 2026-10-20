@@ -11,6 +11,14 @@
   document.getElementById("resumo").textContent = P.resumo;
   var orientadores = document.getElementById("orientadores");
   if (orientadores) orientadores.textContent = "Orientação: " + P.orientadores;
+  var arquivoBanner = "imagens/" + P.id + "-banner.png";
+  var banner = new Image();
+  banner.onload = function () {
+    var topo = document.querySelector(".pagina-projeto .topo");
+    topo.style.setProperty("--imagem-projeto", 'url("' + arquivoBanner + '")');
+    topo.classList.add("tem-imagem");
+  };
+  banner.src = arquivoBanner;
   var form = document.getElementById("voto"), aviso = document.getElementById("aviso");
   var chave = "votou-turma-" + id;
   function agradecer() {

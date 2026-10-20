@@ -35,13 +35,23 @@ Os votos caem na aba **Respostas** do Forms (e em planilha, se você vincular).
 ## 2. Cadastrar temas e resumos
 Edite só o arquivo **projetos.js**.
 
+## 2.1 Banners ilustrados dos projetos
+
+Os prompts prontos para gerar as 13 imagens estão em **PROMPTS-IMAGENS.md**. Gere cada arte em 1600 × 600 px e salve-a na pasta `imagens/` com o nome indicado, por exemplo `imagens/103-2-banner.png`. A página do projeto detecta a imagem e a usa automaticamente no banner superior.
+
 ## 3. Publicar no GitHub Pages
 Crie um repositório público, envie todos os arquivos desta pasta,
 depois Settings > Pages > Branch: main / (root) > Save.
 O site fica em https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/
 
 ## 4. QR Codes
-Abra `compartilhar.html` depois de publicar o site e use o botão **Imprimir QR Codes**. A página monta e organiza automaticamente um QR para cada projeto. Antes disso, confira o endereço em `SITE_URL` no `config.js`.
+
+Abra `compartilhar.html` depois de publicar o site. Ela separa dois materiais:
+
+- **Visitantes e público:** `compartilhar-publico.html`, com um QR de votação por projeto.
+- **Comissão avaliadora:** `compartilhar-avaliadores.html`, que pede o código individual do avaliador e monta os QRs técnicos de todos os projetos para aquela pessoa.
+
+Antes disso, confira o endereço em `SITE_URL` no `config.js`.
 
 Um QR por projeto aponta, por exemplo, para
 https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/projeto.html?id=103-2

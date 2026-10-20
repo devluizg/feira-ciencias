@@ -2,21 +2,25 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>QR Codes | Feira de Projetos</title><link rel="stylesheet" href="style.css">
+<title>Compartilhar | Feira de Projetos</title><link rel="stylesheet" href="style.css">
 </head>
-<body class="pagina-compartilhar">
+<body class="pagina-compartilhar pagina-escolha">
 <header class="topo topo-compartilhar">
   <p>Material da organização</p>
-  <h1>QR Codes para votação</h1>
-  <p>Imprima um cartão ao lado de cada trabalho. Cada QR leva o visitante diretamente à página daquele projeto.</p>
+  <h1>Escolha o tipo de QR Code</h1>
+  <p>Distribua os QR Codes certos para cada público da feira.</p>
 </header>
-<main class="compartilhar-main">
-  <div class="acoes-impressao">
-    <a href="index.html">← Voltar à feira</a>
-    <button type="button" onclick="window.print()">Imprimir QR Codes</button>
+<main class="compartilhar-main escolha-main">
+  <a class="voltar" href="index.html">← Voltar à feira</a>
+  <div class="escolhas-compartilhamento">
+    <a class="escolha-compartilhamento publico" href="compartilhar-publico.html">
+      <span class="icone-escolha">⌁</span><h2>Visitantes e público</h2>
+      <p>QR Codes para votar nos projetos depois de conhecer as apresentações.</p><b>Gerar QRs públicos →</b>
+    </a>
+    <a class="escolha-compartilhamento avaliadores" href="compartilhar-avaliadores.html">
+      <span class="icone-escolha">✦</span><h2>Comissão avaliadora</h2>
+      <p>QR Codes técnicos, com três critérios e código individual por avaliador.</p><b>Gerar QRs da comissão →</b>
+    </a>
   </div>
-  <p class="pequeno">Os QR Codes são públicos e destinados aos visitantes. Os links de avaliadores devem ser gerados separadamente, com o código individual de cada avaliador.</p>
-  <section id="qrs" class="qrs" aria-live="polite"></section>
 </main>
-<script src="projetos.js"></script><script src="config.js"></script><script src="compartilhar.js"></script>
 </body></html>
