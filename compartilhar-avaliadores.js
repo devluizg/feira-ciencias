@@ -11,16 +11,9 @@
     var el = document.createElement("span"); el.textContent = texto; return el.innerHTML;
   }
   function montar(token) {
-    var grupos = window.PROJETOS.reduce(function (todos, projeto) {
-      (todos[projeto.turma] = todos[projeto.turma] || []).push(projeto); return todos;
-    }, {});
-    area.innerHTML = '<p class="aviso aviso-codigo">Conjunto reservado para o código <b>' + textoSeguro(token) + '</b>. Entregue estas folhas somente a esta pessoa avaliadora.</p>' + Object.keys(grupos).map(function (turma) {
-      return '<section class="grupo-qr"><h2>Turma ' + turma + '</h2><div class="grade-qr">' + grupos[turma].map(function (p) {
-        var link = raiz + "/avaliador.html?projeto=" + encodeURIComponent(p.id) + "&token=" + encodeURIComponent(token);
-        var imagem = "https://api.qrserver.com/v1/create-qr-code/?size=220x220&format=svg&data=" + encodeURIComponent(link);
-        return '<article class="cartao-qr avaliador-qr"><img src="' + imagem + '" width="220" height="220" alt="QR Code de avaliação para ' + textoSeguro(p.tema) + '"><div><span>Turma ' + p.turma + ' · Projeto ' + p.numero + '</span><h3>' + textoSeguro(p.tema) + '</h3><p>Avaliação técnica · 3 critérios</p><code>' + textoSeguro(link) + '</code></div></article>';
-      }).join("") + '</div></section>';
-    }).join("");
+    var link = raiz + "/painel-avaliador.html?token=" + encodeURIComponent(token);
+    var imagem = "https://api.qrserver.com/v1/create-qr-code/?size=360x360&format=svg&data=" + encodeURIComponent(link);
+    area.innerHTML = '<article class="cartao-jurado"><p class="sobretitulo">Feira de Ciências 2026</p><h2>Cartão do jurado</h2><img src="' + imagem + '" width="360" height="360" alt="QR Code privado do jurado"><b>Código ' + textoSeguro(token) + '</b><p>Leia este QR uma vez. No painel, escolha cada projeto, avalie os três critérios e acompanhe seu progresso.</p><small>Material reservado · não compartilhar com o público</small></article>';
     botaoImprimir.hidden = false;
   }
   form.addEventListener("submit", function (evento) {

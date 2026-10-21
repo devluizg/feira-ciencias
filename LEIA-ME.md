@@ -1,24 +1,29 @@
 # Feira de Projetos: passo a passo
 
-## Ranking e avaliação da comissão
+## Sistema de votos e ranking
 
-Além do voto do público, esta versão tem um link de avaliação técnica para cada projeto:
+Os votos do público e as avaliações dos jurados são gravados em uma planilha Google. O site confirma a gravação antes de informar que o envio foi concluído.
 
-- `avaliador.html?projeto=101-1&token=CODIGO_DO_AVALIADOR`
-- `avaliador.html?projeto=103-3&token=CODIGO_DO_AVALIADOR`
+Cada jurado recebe um único QR privado para `painel-avaliador.html`. O painel lista os 13 projetos, mostra o progresso e impede uma segunda avaliação do mesmo projeto. Os critérios oficiais são domínio dos conceitos, clareza da explicação e uso de material reciclado, com notas de 3,0 a 5,0.
 
-Cada avaliador recebe o seu próprio `token` no QR Code. Os três critérios são: qualidade científica, criatividade/impacto e comunicação. A classificação em `ranking.html` usa a média dos três critérios; se houver empate, usa a média do público e depois a quantidade de votos públicos.
+A classificação usa a média técnica dos jurados. Em empate, usa a média do público e, depois, a quantidade de votos públicos. O painel `admin.html` apresenta a classificação provisória, contagens e pendências. As respostas completas permanecem na planilha.
 
-Para que os votos e o ranking sejam compartilhados por todos os celulares, crie uma planilha Google e abra **Extensões > Apps Script**. Copie o conteúdo de `Code.gs`, informe o ID da planilha em `PLANILHA_ID` e troque os códigos no objeto `AVALIADORES`. Em **Implantar > Nova implantação**, escolha **Aplicativo da Web**, execute como sua conta e permita acesso a qualquer pessoa. Copie a URL criada para `API_URL` em `config.js`. O ranking é consulta pública; as respostas detalhadas permanecem somente na sua planilha.
+## Configuração obrigatória da planilha
 
-Depois de publicar no GitHub Pages, gere os QRs individuais, por exemplo:
+1. Crie uma planilha Google vazia e copie o identificador localizado entre `/d/` e `/edit` na URL.
+2. Na planilha, abra **Extensões > Apps Script** e substitua o conteúdo pelo arquivo `Code.gs`.
+3. No Apps Script, informe o identificador em `PLANILHA_ID`.
+4. Troque os códigos de exemplo no objeto `AVALIADORES` somente na cópia do Apps Script. Não publique códigos reais no GitHub.
+5. Em **Configurações do projeto > Propriedades do script**, crie a propriedade `ADMIN_KEY` com uma senha forte para o painel da organização.
+6. Em **Implantar > Nova implantação**, escolha **Aplicativo da Web**, execute como sua conta e permita acesso a qualquer pessoa.
+7. Copie a URL terminada em `/exec` para `API_URL` em `config.js` e envie a alteração ao GitHub.
+8. Faça um voto público e uma avaliação técnica de teste. Confirme as abas `Votos públicos` e `Avaliações` na planilha e depois apague as linhas de teste.
 
-- `https://SEU-USUARIO.github.io/feira-ciencias/avaliador.html?projeto=101-1&token=AV-ANA-2026`
-- `https://SEU-USUARIO.github.io/feira-ciencias/avaliador.html?projeto=103-3&token=AV-ANA-2026`
+O ranking público começa fechado. Para divulgá-lo, altere `PUBLICAR_RANKING` para `true` no Apps Script e crie uma nova versão da implantação. O painel administrativo funciona mesmo com o ranking público fechado.
 
-Repita usando um código diferente para cada pessoa avaliadora. Não compartilhe esses QRs com o público. Enquanto `API_URL` estiver vazia, a página de avaliadores fica propositalmente indisponível e os votos públicos continuam no Google Forms.
+## 1. Alternativa temporária com Google Forms
 
-## 1. Criar o formulário de votos (Google Forms)
+Esta alternativa registra somente o voto público e não alimenta o ranking consolidado. Para a feira, use preferencialmente o Apps Script descrito acima.
 Crie um formulário com 4 perguntas, nesta ordem, todas de "Resposta curta" ou "Parágrafo":
 Turma, Nota, Nome, Comentário (o comentário não precisa ser obrigatório).
 Depois: menu ⋮ > **Receber link pré-preenchido**, preencha qualquer coisa nas 4 perguntas e clique em "Receber link".
@@ -49,7 +54,8 @@ O site fica em https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/
 Abra `compartilhar.html` depois de publicar o site. Ela separa dois materiais:
 
 - **Visitantes e público:** `compartilhar-publico.html`, com um QR de votação por projeto.
-- **Comissão avaliadora:** `compartilhar-avaliadores.html`, que pede o código individual do avaliador e monta os QRs técnicos de todos os projetos para aquela pessoa.
+- **Comissão avaliadora:** `compartilhar-avaliadores.html`, que pede o código individual e monta um cartão com um único QR para o painel daquele jurado.
+- **Organização:** `admin.html`, protegido pela propriedade `ADMIN_KEY`, com votos, médias e pendências.
 
 Antes disso, confira o endereço em `SITE_URL` no `config.js`.
 

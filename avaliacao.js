@@ -27,9 +27,9 @@
 
   document.querySelectorAll(".escala").forEach(function (el) {
     var campo = el.dataset.campo;
-    el.innerHTML = [1, 2, 3, 4, 5].map(function (nota) {
+    el.innerHTML = [3, 3.5, 4, 4.5, 5].map(function (nota) {
       var inputId = campo + "-" + nota;
-      return '<input required type="radio" name="' + campo + '" id="' + inputId + '" value="' + nota + '"><label for="' + inputId + '">' + nota + '</label>';
+      return '<input required type="radio" name="' + campo + '" id="' + inputId + '" value="' + nota + '"><label for="' + inputId + '">' + String(nota).replace(".", ",") + '</label>';
     }).join("");
   });
 
@@ -47,10 +47,19 @@
     mostrar("Este não é um link de avaliador válido. Use o QR Code entregue pela organização.");
     return;
   }
-  if (localStorage.getItem(chave)) {
-    mostrar("Esta avaliação já foi registrada neste dispositivo.");
-    return;
+  function confirmar(tentativa) {
+    return FEIRA_API.jsonp({ acao: "status", token: token }, "confirmarAvaliacao").then(function (dados) {
+      if (dados.ok && dados.concluidos.indexOf(P.id) !== -1) return true;
+      if (tentativa >= 5) throw new Error("A planilha ainda não confirmou o registro.");
+      return new Promise(function (resolve) { setTimeout(resolve, 700); }).then(function () { return confirmar(tentativa + 1); });
+    });
   }
+  var botaoEnviar = form.querySelector("button"); botaoEnviar.disabled = true;
+  FEIRA_API.jsonp({ acao: "status", token: token }, "verificarAvaliacao").then(function (dados) {
+    if (!dados.ok) { mostrar(dados.erro || "Código de jurado inválido."); return; }
+    if (dados.concluidos.indexOf(P.id) !== -1) { mostrar("Esta avaliação já está registrada. Volte ao painel para continuar o roteiro."); return; }
+    botaoEnviar.disabled = false;
+  }).catch(function () { mostrar("Não foi possível validar o código do jurado. Verifique a internet e tente novamente."); });
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -59,21 +68,29 @@
     dados.append("token", token);
     dados.append("projeto", String(P.id));
     dados.append("turma", P.turma);
-    dados.append("cientifico", form.cientifico.value);
-    dados.append("inovacao", form.inovacao.value);
-    dados.append("apresentacao", form.apresentacao.value);
+    dados.append("dominio", form.dominio.value);
+    dados.append("clareza", form.clareza.value);
+    dados.append("reciclado", form.reciclado.value);
+    dados.append("ficha_projeto", form.ficha_projeto.checked ? "1" : "0");
+    dados.append("ficha_turma", form.ficha_turma.checked ? "1" : "0");
+    dados.append("ficha_conceito", form.ficha_conceito.checked ? "1" : "0");
+    dados.append("ficha_material", form.ficha_material.checked ? "1" : "0");
+    dados.append("ficha_impacto", form.ficha_impacto.checked ? "1" : "0");
     dados.append("comentario", form.comentario.value.trim());
     var botao = form.querySelector("button");
     botao.disabled = true;
+    aviso.hidden = false; aviso.textContent = "Enviando e confirmando na planilha…";
     fetch(C.API_URL, { method: "POST", mode: "no-cors", body: dados })
+      .then(function () { return confirmar(0); })
       .then(function () {
         localStorage.setItem(chave, "1");
-        mostrar("Avaliação registrada. Obrigado pela contribuição à comissão.");
+        form.hidden = true; aviso.hidden = false;
+        aviso.innerHTML = 'Avaliação salva na planilha. <a href="painel-avaliador.html?token=' + encodeURIComponent(token) + '">Voltar ao painel do jurado</a>.';
       })
       .catch(function () {
         botao.disabled = false;
         aviso.hidden = false;
-        aviso.textContent = "Não foi possível enviar. Verifique a internet e tente novamente.";
+        aviso.textContent = "Não foi possível confirmar o registro. Verifique a internet e tente novamente; não feche a página até aparecer a confirmação.";
       });
   });
 })();

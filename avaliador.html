@@ -9,17 +9,24 @@
   <section class="guia-avaliacao" aria-labelledby="titulo-guia">
     <p class="sobretitulo">Como avaliar</p>
     <h2 id="titulo-guia">Olhe o conjunto da experiência</h2>
-    <p>Considere o que o grupo pesquisou, a solução que propõe e como conseguiu explicar suas escolhas. Cada critério vale de 1 a 5.</p>
+    <p>Considere o que o grupo pesquisou, como explicou os conceitos e como utilizou materiais reutilizados. Cada critério vale de 3,0 a 5,0.</p>
     <ol class="passos-avaliacao"><li><b>1</b> Observe</li><li><b>2</b> Reflita</li><li><b>3</b> Registre</li></ol>
   </section>
   <h2 class="titulo-formulario">Registre suas notas</h2>
   <form id="avaliacao">
-    <fieldset><legend><span>01</span> Qualidade científica e domínio do tema</legend><p class="descricao-criterio">O projeto tem fundamento, coerência e demonstra compreensão do assunto?</p><div class="escala" data-campo="cientifico"></div></fieldset>
-    <fieldset><legend><span>02</span> Criatividade e impacto da solução</legend><p class="descricao-criterio">A proposta é inventiva, relevante e contribui para uma questão real?</p><div class="escala" data-campo="inovacao"></div></fieldset>
-    <fieldset><legend><span>03</span> Comunicação e apresentação do grupo</legend><p class="descricao-criterio">O grupo explicou suas ideias com clareza, organização e participação?</p><div class="escala" data-campo="apresentacao"></div></fieldset>
+    <fieldset><legend><span>01</span> Domínio dos conceitos</legend><p class="descricao-criterio">O grupo demonstra conhecimento técnico e científico e conecta matemática, física, química ou biologia ao experimento?</p><div class="escala" data-campo="dominio"></div></fieldset>
+    <fieldset><legend><span>02</span> Clareza da explicação</legend><p class="descricao-criterio">A equipe comunica com fluidez, boa postura e capacidade de síntese?</p><div class="escala" data-campo="clareza"></div></fieldset>
+    <fieldset><legend><span>03</span> Uso de material reciclado</legend><p class="descricao-criterio">Há quantidade e criatividade no uso de sucatas e materiais reutilizados no estande e nos protótipos?</p><div class="escala" data-campo="reciclado"></div></fieldset>
+    <fieldset class="ficha-estande"><legend><span>✓</span> Ficha técnica do estande</legend><p class="descricao-criterio">Marque os itens que estão visíveis e preenchidos. Itens ausentes não alteram a nota automaticamente, mas ficam registrados.</p>
+      <label><input type="checkbox" name="ficha_projeto" value="1"> Nome oficial do projeto</label>
+      <label><input type="checkbox" name="ficha_turma" value="1"> Turma e orientador(es)</label>
+      <label><input type="checkbox" name="ficha_conceito" value="1"> Conceito integrado</label>
+      <label><input type="checkbox" name="ficha_material" value="1"> Material reutilizado</label>
+      <label><input type="checkbox" name="ficha_impacto" value="1"> Impacto ambiental</label>
+    </fieldset>
     <label class="campo">Observação para a comissão (opcional)<textarea name="comentario" rows="3" maxlength="500"></textarea></label>
-    <button type="submit">Registrar avaliação</button><p class="pequeno">Cada código de avaliador pode registrar uma avaliação por projeto.</p>
+    <button type="submit">Registrar avaliação</button><p class="pequeno">A confirmação só aparece depois que a avaliação estiver salva na planilha.</p>
   </form><p class="aviso" id="aviso" hidden></p>
 </main>
-<script src="projetos.js"></script><script src="config.js"></script><script src="avaliacao.js"></script>
+<script src="projetos.js"></script><script src="config.js"></script><script src="api.js"></script><script src="avaliacao.js"></script>
 </body></html>
