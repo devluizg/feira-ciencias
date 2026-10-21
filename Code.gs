@@ -4,7 +4,7 @@
  * na cópia do Apps Script. Cadastre ADMIN_KEY em Configurações > Propriedades
  * do script. O LEIA-ME.md contém o passo a passo completo.
  */
-var PLANILHA_ID = "COLE_O_ID_DA_PLANILHA_AQUI";
+var PLANILHA_ID = "1-qzEqMHeFFQVRHKDvkCQls1FnoGuSVe6mPm3gTertAI";
 var PUBLICAR_RANKING = false; // Troque para true somente na divulgação final.
 
 /* Vagas antecipadas: use apenas quantas pessoas comparecerem. */
