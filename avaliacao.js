@@ -84,8 +84,7 @@
       .then(function () { return confirmar(0); })
       .then(function () {
         localStorage.setItem(chave, "1");
-        form.hidden = true; aviso.hidden = false;
-        aviso.innerHTML = 'Avaliação salva na planilha. <a href="painel-avaliador.html?token=' + encodeURIComponent(token) + '">Voltar ao painel do jurado</a>.';
+        window.location.replace("painel-avaliador.html?token=" + encodeURIComponent(token));
       })
       .catch(function () {
         botao.disabled = false;
