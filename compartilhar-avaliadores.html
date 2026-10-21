@@ -2,17 +2,12 @@
 <html lang="pt-BR">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>QR Codes da comissão | Feira de Projetos</title><link rel="stylesheet" href="style.css"></head>
 <body class="pagina-compartilhar pagina-avaliadores-qr">
-<header class="topo topo-avaliador"><p>Material restrito da organização</p><h1>QR individual do jurado</h1><p>Gere um cartão por pessoa. Um único QR abre o roteiro completo dos 13 projetos.</p></header>
+<header class="topo topo-avaliador"><p>Material restrito da organização</p><h1>Cartões da comissão</h1><p>Os acessos dos jurados já estão cadastrados. Entregue somente os cartões necessários.</p></header>
 <main class="compartilhar-main">
-  <div class="acoes-impressao"><a href="compartilhar.html">← Escolher outro tipo</a><button id="imprimir" type="button" hidden onclick="window.print()">Imprimir QR Codes</button></div>
-  <form class="form-codigo" id="form-codigo">
-    <label class="campo">Código individual do avaliador
-      <input id="token" type="text" maxlength="80" placeholder="Ex.: J01-MATA-8472" autocomplete="off" required>
-    </label>
-    <button type="submit">Montar cartão deste jurado</button>
-    <p class="pequeno">Use exatamente um código cadastrado em <code>Code.gs</code>. Não afixe estes QR Codes em locais acessíveis ao público.</p>
-  </form>
-  <section id="qrs-avaliador" class="qr-unico" aria-live="polite"></section>
+  <div class="acoes-impressao"><a href="compartilhar.html">← Escolher outro tipo</a><button id="imprimir" type="button" onclick="window.print()">Imprimir cartões</button></div>
+  <p class="aviso-codigo">Entregue um cartão a cada avaliador. Se houver quatro pessoas, use Jurado 01 a Jurado 04. Não afixe estes QR Codes em locais acessíveis ao público.</p>
+  <section id="qrs-avaliador" class="grade-jurados-qr" aria-live="polite"></section>
+  <button id="mostrar-reservas" class="botao-reserva" type="button">Mostrar cartões reserva (Jurado 05 a 08)</button>
 </main>
 <script src="projetos.js"></script><script src="config.js"></script><script src="compartilhar-avaliadores.js"></script>
 </body></html>
